@@ -1,6 +1,8 @@
 //SPDX-License-Identifier: MIT
-
 pragma solidity >=0.5.0 <0.9.0;
+
+//To debug the smart contract:
+import "hardhat/console.sol";
 
 contract Token {
     string public name = "Hardhat Token";
@@ -24,6 +26,9 @@ contract Token {
     }
 
     function transfer(address to, uint256 amount) external {
+        //debug the contract
+        console.log("**Sender balance is %s token**", balances[msg.sender]);
+        console.log("**Sender is sending %s token to %s address**", amount, to);
         //first check if the owner has the sufficient amount or not
         require(
             balances[msg.sender] >= amount,
